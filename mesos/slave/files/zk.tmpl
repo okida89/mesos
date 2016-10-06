@@ -1,0 +1,1 @@
+zk://{% for server, addrs in salt['mine.get']('roles:zookeeper', 'network.ip_addrs', expr_form='grain') | dictsort() -%}{{ addrs[0] }}:2181{% if not loop.last -%},{% endif %}{% endfor -%}/mesos
